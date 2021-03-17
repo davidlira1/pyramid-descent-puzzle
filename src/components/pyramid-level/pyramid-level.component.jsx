@@ -2,7 +2,7 @@ import React from 'react';
 import './pyramid-level.styles.scss';
 import PyramidBlock from '../pyramid-block/pyramid-block.component';
 
-var PyramidLevel = ({row, rowValues, handleClickBlock}) => (
+var PyramidLevel = ({row, rowValues, handleClickBlock, bottomBorder}) => (
     <div className="pyramid-level">
         {rowValues.map((node, idx) => (
             <PyramidBlock 
@@ -10,6 +10,8 @@ var PyramidLevel = ({row, rowValues, handleClickBlock}) => (
                 col={idx} 
                 node={node} 
                 handleClickBlock={handleClickBlock}
+                bottomBorder={bottomBorder}
+                rightBorder={idx === rowValues.length - 1}
             />
         ))}
     </div>

@@ -1,5 +1,7 @@
 .pyramid-block {
-    border: 1px solid blue;
+    border: 1px solid black;
+    border-bottom: none;
+    border-right: none;
     width: 100px;
     height: 100px;
     display: flex;
@@ -10,6 +12,14 @@
 }
 
 .clicked {
-    background-color: rgb(13, 138, 86);
+    background-color: rgb(42, 160, 111);
     color: white;
+}
+
+.bottom-border {
+    border-bottom: 1px solid black;
+}
+
+.right-border {
+    border-right: 1px solid black;
 }

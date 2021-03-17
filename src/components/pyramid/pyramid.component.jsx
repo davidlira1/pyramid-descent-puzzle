@@ -9,6 +9,7 @@ var Pyramid = ({pyramidValues, handleClickBlock}) => (
                 row={idx}
                 rowValues={row} 
                 handleClickBlock={handleClickBlock}
+                bottomBorder={idx === pyramidValues.length - 1}
             />
         )}
     </div>
