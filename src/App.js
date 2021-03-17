@@ -1,7 +1,11 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
-import Pyramid from './components/pyramid/pyramid.component'
+import Pyramid from './components/pyramid/pyramid.component';
+import LeftPanel from './components/left-panel/left-panel.component';
+import MiddlePanel from './components/middle-panel/middle-panel.component';
+import RightPanel from './components/right-panel/right-panel.component';
+
 
 class App extends React.Component {
   constructor(props) {
@@ -9,7 +13,8 @@ class App extends React.Component {
 
     this.state = {
       steps: '',
-      pyramidValues: [[{value:2, clicked: true}],[{value:4, clicked: false},{value:3, clicked: false}],[{value:4, clicked: false},{value:5, clicked: false},{value:6, clicked: false}],[{value:7, clicked: false},{value:8, clicked: false},{value:9, clicked: false},{value:6, clicked: false}],[{value:5, clicked: false},{value:3, clicked: false},{value:8, clicked: false},{value:6, clicked: false},{value:1, clicked: false}]]
+      pyramidValues: [[{value:2, clicked: true}],[{value:4, clicked: false},{value:3, clicked: false}],[{value:3, clicked: false},{value:2, clicked: false},{value:6, clicked: false}],[{value:2, clicked: false},{value:9, clicked: false},{value:5, clicked: false},{value:2, clicked: false}],[{value:10, clicked: false},{value:5, clicked: false},{value:2, clicked: false},{value:15, clicked: false},{value:5, clicked: false}]],
+      target: 720
     }
 
     this.handleClickBlock = this.handleClickBlock.bind(this);
@@ -65,7 +70,11 @@ class App extends React.Component {
   render() {
     return (
       <div className="App">
-        <Pyramid pyramidValues={this.state.pyramidValues} handleClickBlock={this.handleClickBlock}/>
+        <LeftPanel />
+        <MiddlePanel>
+          <Pyramid pyramidValues={this.state.pyramidValues} handleClickBlock={this.handleClickBlock}/>
+        </MiddlePanel>
+        <RightPanel target={this.state.target}/>
       </div>
     )
   };
