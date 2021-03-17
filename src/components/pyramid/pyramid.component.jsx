@@ -4,7 +4,7 @@ import PyramidLevel from '../pyramid-level/pyramid-level.component'
 
 var Pyramid = ({pyramidValues}) => (
     <div className="pyramid">
-        {pyramidValues.map(row => <PyramidLevel />)}
+        {pyramidValues.map(row => <PyramidLevel rowValues={row}/>)}
     </div>
 )
 

@@ -1,9 +1,9 @@
 import React from 'react';
-import './pyramid.styles.scss';
+import './pyramid-level.styles.scss';
 import PyramidBlock from '../pyramid-block/pyramid-block.component';
 
 var PyramidLevel = ({rowValues}) => (
-    <div className="pyramid">
+    <div className="pyramid-level">
         {rowValues.map(value => (
             <PyramidBlock value={value}/>
         ))}
