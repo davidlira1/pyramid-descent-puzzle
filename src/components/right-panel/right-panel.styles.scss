@@ -2,11 +2,14 @@
     flex-grow: 1;
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
     font-size: 40px;
     color: rgb(42, 160, 111);
-    padding: 20px;
+    padding: 15px;
+
+    .target {
+        margin-bottom: 20px;
+    }
 
     button {
         cursor: pointer;
@@ -16,12 +19,13 @@
         padding: 10px;
         border: none;
         outline: none;
-        width: 100px;
+        width: 120px;
+        margin-bottom: 10px;
+        border-radius: 20px;
+        height: 100px;
     }
 
-    .no-color {
-        background-color: white;
-        color: black;
-        cursor: default;
+    p {
+        font-size: 24px;
     }
 }

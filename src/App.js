@@ -4,8 +4,11 @@ import Pyramid from './components/pyramid/pyramid.component';
 import LeftPanel from './components/left-panel/left-panel.component';
 import MiddlePanel from './components/middle-panel/middle-panel.component';
 import RightPanel from './components/right-panel/right-panel.component';
+import GoodJob from './components/good-job/good-job.component';
 import levels from './levels/levels.js';
 import pyramidDescentSolver from './solver/pyramidDescentSolver';
+import productForStepsTaken from './solver/productForStepsTaken';
+
 
 class App extends React.Component {
   constructor(props) {
@@ -16,12 +19,14 @@ class App extends React.Component {
       pyramidValues: [[]],
       target: 0,
       level: 0,
-      solved: false
+      solved: false,
+      solvedAll: false,
+      wrongAnswer: 0
     }
-
     this.handleClickBlock = this.handleClickBlock.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleNextPuzzle = this.handleNextPuzzle.bind(this);
+    this.handleTryAgain = this.handleTryAgain.bind(this);
   }
 
   componentDidMount() {
@@ -29,6 +34,10 @@ class App extends React.Component {
   }
 
   nextLevel() {
+    if(this.state.level === levels.length) {
+      this.setState({solvedAll: true})
+      return;
+    } 
     var level = this.state.level + 1;
     var pyramidValues = levels[level - 1].values.map(row => row.map(col => {return {value: col, clicked: false}}));
     pyramidValues[0][0].clicked = true;
@@ -76,7 +85,6 @@ class App extends React.Component {
         return newC;
       })
     })
-    // console.log('newPyramidValues',newPyramidValues)
 
     this.setState({
       pyramidValues: newPyramidValues,
@@ -91,11 +99,11 @@ class App extends React.Component {
     var pyramidValues = levels[this.state.level - 1].values;
     var result = pyramidDescentSolver(this.state.target, pyramidValues);
     if(result === this.state.steps) {
-      console.log('got the answer!')
-      //at this point we want to change the button to say next
       this.setState({solved: 'yes'});
     } else {
-      this.setState({solved: 'tryAgain'});
+      //DETERMINE WHAT THE PRODUCT IS FOR THE STEPS TAKEN
+      var wrongAnswer = productForStepsTaken(this.state.steps, levels[this.state.level - 1].values);
+      this.setState({solved: 'tryAgain', wrongAnswer});
     }
   }
 
@@ -103,9 +111,31 @@ class App extends React.Component {
     this.nextLevel();
   }
 
+  handleTryAgain = () => {
+    var newPyramidValues = this.state.pyramidValues.map(row => {
+      return row.map(col => {
+        var newC = {...col};
+        newC.clicked = false;
+        return newC
+      })
+    });
+    newPyramidValues[0][0].clicked = true;
+    this.setState({
+      pyramidValues: newPyramidValues, 
+      steps: '', 
+      solved: 'no'
+    });
+  }
+
   render() {
     return (
+      this.state.solvedAll 
+      ? 
       <div className="App">
+        <GoodJob />
+      </div>
+      :
+      <div className="App"> 
         <LeftPanel />
         <MiddlePanel>
           <Pyramid 
@@ -119,7 +149,9 @@ class App extends React.Component {
           solved={this.state.solved}
           handleSubmit={this.handleSubmit}
           handleNextPuzzle={this.handleNextPuzzle}
-          />
+          handleTryAgain={this.handleTryAgain}
+          wrongAnswer={this.state.wrongAnswer}
+        />
       </div>
     )
   };

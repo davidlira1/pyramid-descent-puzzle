@@ -1,10 +1,10 @@
 import React from 'react';
 import './right-panel.styles.scss';
 
-var RightPanel = ({target, steps, length, solved, handleSubmit, handleNextPuzzle}) => (
+var RightPanel = ({target, steps, length, solved, handleSubmit, handleNextPuzzle, wrongAnswer, handleTryAgain}) => (
     <div className="right-panel">
-        <div>Product</div>
-        <div>{target}</div>
+        <div className="product">Product</div>
+        <div className="target">{target}</div>
         {steps.length === length - 1 
             ? 
             <button 
@@ -18,12 +18,18 @@ var RightPanel = ({target, steps, length, solved, handleSubmit, handleNextPuzzle
             solved === 'tryAgain' || solved === 'yes' 
             ? 
             <button
-                className={solved === 'tryAgain' ? 'no-color' : ''}
-                onClick={solved === 'yes' ? handleNextPuzzle : null}
+                onClick={solved === 'yes' ? handleNextPuzzle : solved === 'tryAgain' ? handleTryAgain : null}
             >
-                {solved === 'tryAgain' ? 'Try Again' : 'Next Puzzle!'}
+                {solved === 'tryAgain' ? `Try Again` : 'Next Puzzle!'}
             </button>
             : null 
+        }
+        {
+            solved === 'tryAgain' 
+            ?
+            <p>{`Your product is ${wrongAnswer}`}</p>
+            :
+            null
         }
 
     </div>
