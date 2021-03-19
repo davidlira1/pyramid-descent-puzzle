@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/pyramid-descent-puzzle/static/css/main.5244188e.chunk.css",
+    "main.js": "/pyramid-descent-puzzle/static/js/main.647991a7.chunk.js",
+    "main.js.map": "/pyramid-descent-puzzle/static/js/main.647991a7.chunk.js.map",
+    "runtime-main.js": "/pyramid-descent-puzzle/static/js/runtime-main.9a77f49e.js",
+    "runtime-main.js.map": "/pyramid-descent-puzzle/static/js/runtime-main.9a77f49e.js.map",
+    "static/js/2.26b321d6.chunk.js": "/pyramid-descent-puzzle/static/js/2.26b321d6.chunk.js",
+    "static/js/2.26b321d6.chunk.js.map": "/pyramid-descent-puzzle/static/js/2.26b321d6.chunk.js.map",
+    "static/js/3.f8751e71.chunk.js": "/pyramid-descent-puzzle/static/js/3.f8751e71.chunk.js",
+    "static/js/3.f8751e71.chunk.js.map": "/pyramid-descent-puzzle/static/js/3.f8751e71.chunk.js.map",
+    "index.html": "/pyramid-descent-puzzle/index.html",
+    "static/css/main.5244188e.chunk.css.map": "/pyramid-descent-puzzle/static/css/main.5244188e.chunk.css.map",
+    "static/js/2.26b321d6.chunk.js.LICENSE.txt": "/pyramid-descent-puzzle/static/js/2.26b321d6.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.9a77f49e.js",
+    "static/js/2.26b321d6.chunk.js",
+    "static/css/main.5244188e.chunk.css",
+    "static/js/main.647991a7.chunk.js"
+  ]
+}
